@@ -48,6 +48,24 @@ $(window).scroll(function() {
   }
 });
 
+/* Navegador con bullets */
+function bull_nav(containerId){
+  var cuenta_navs = $("#"+containerId+ " .bulls").length;
+  for(i=0;i<cuenta_navs;i++){
+    $("#"+containerId+ " .bull_nav").append("<li data-bull='"+i+"'></li>"); 
+  }
+
+  $("#"+containerId+ " .bull_nav>li").on("click", function(){
+    if( !$(this).hasClass("activo") ){
+      $("#"+containerId+ " .bulls, #" +containerId+ " .bull_nav>li").removeClass("activo");
+      $("#"+containerId+ " .bulls").eq( $(this).attr("data-bull") ).addClass("activo");
+      $(this).addClass("activo");
+    }
+  });
+  $("#"+containerId+ " .bulls").eq(0).addClass("activo");
+  $("#" +containerId+ " .bull_nav>li").eq(0).addClass("activo");
+}
+
 /* Randomizador de arrays (Algoritmo Fisher-Yates)*/
 function shuffle(arr) {
   var cI = arr.length, tempV, rdmI;
