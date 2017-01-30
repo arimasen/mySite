@@ -6,12 +6,17 @@ body{
     color:#2d2d2d;
     font-size: 16px;
 }
-
+body p, body li{
+    color: #ededed;
+    text-shadow: 1px 1px 1px rgba(50,50,50,0.5);
+}
 nav{
     height: 100px;
     background-color: rgba(45, 45, 45, 1);
     transition: height 0.6s, background-color 0.4s;
+    font-weight: bold;
 }
+nav a{transition: color 0.6s;}
 nav>.container{
     padding-top:20px;
     transition: padding-top 0.6s;
@@ -20,28 +25,29 @@ nav.encoge{
     height:40px;
     background-color: rgba(45,45,45,0.7);
 }
+nav.encoge a{color:white;}
 nav.encoge>.container{ padding-top:0px; }
 
-#sec-intro{}
-#sec-intro h1{
-    margin-top: 1.6em;
-    transform: rotate(-5deg);
-    color:#1b1c59;
+.nav>li>a::before,.nav>li>a::before, .nav>li>a::after,.nav>li>a::after{
+    content: "";
+    position: absolute;
+    width: 100%; height:3px;
+    left:0; opacity: 0;
+    background-color: rgba(255, 255,255,0.6);
+    transition:all 0.6s;
 }
-
-
-#sec-apt{
-    padding: 3em 0; 
-    background: url(../imgs/bg2.jpg) right top fixed;
-    background-size: cover;
-    box-shadow:2px 2px 5px;
+.nav>li>a::before,.nav>li>a::before{
+    top:-10px;
 }
-#sec-apt ul{
-    background-color: rgba(255,255,255,0.8);
-    padding:1em; border-radius:20%;
-    width: 80%; margin:1em auto 0; 
+.nav>li>a::after,.nav>li>a::after{
+    bottom:-10px;
 }
-#sec-hab{}
+.nav>li>a:focus,.nav>li>a:hover {
+	text-decoration:none;
+	background-color:transparent;
+}
+.nav>li>a:hover::before,.nav>li>a:hover::before{ top:0; opacity: 1; }
+.nav>li>a:hover::after,.nav>li>a:hover::after{ bottom:0; opacity: 1; }
 
 h1{ font-size: 5em;
     font-family: 'IM Fell English', serif;}
@@ -74,6 +80,97 @@ em, .italic{ font-style: italic; }
 
 .blanco{color:white;}
 .azul_o{color:#15558c;}
+.negro{color:#2d2d2d;}
+
+
+
+
+
+#sec-intro{}
+#sec-intro h1{
+    margin-top: 1.6em;
+    transform: rotate(-5deg);
+    color:#1b1c59;
+}
+
+
+#sec-apt{
+    padding: 3em 0; 
+    background: url(../imgs/bg2.jpg) right top fixed;
+    background-size: cover;
+    box-shadow:2px 2px 5px;
+}
+#sec-apt ul{
+    background-color: rgba(255,255,255,0.8);
+    padding:1em; border-radius:20%;
+    width: 80%; margin:1em auto 0; 
+}
+#sec-hab{}
+#sec-hab img{
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+#sec-exp{
+     box-shadow: 1px 2px 5px #333; 
+}
+.exp-holder{
+    border:1em solid white;
+    position: relative;
+    border-radius:5%;
+    box-shadow: 1px 2px 5px #333; 
+    overflow: hidden;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.exp-holder img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.exp-holder h3{
+    position: absolute;
+    top:calc(50% - 1.2em);
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color:white; opacity: 0;
+    transition: top 0.5s, opacity 0.4s;
+}
+.exp-holder:before {
+    content: "";
+    position: absolute;
+    top:0%;left:0%;
+    width: 100%; height: 100%;
+    background-color: rgba(40,40,40,0.6);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.exp-holder:hover::before{
+    opacity: 1;
+}
+.exp-holder>.content{
+    position: absolute;
+    padding: 0 15px;
+    width: 100%; max-height:70%;
+    bottom: -50%; opacity: 0;
+    transition: bottom 0.5s, opacity 0.5s;
+}
+.exp-holder>.content::after{
+    content: "";
+    position: absolute;
+    width: 100%; height:40%;
+    background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.99) 81%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 81%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 81%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#fc000000',GradientType=0 ); /* IE6-9 */
+    bottom: 0%;    left: 0%;
+}
+
+.exp-holder:hover h3{ top:5%; opacity: 1; }
+.exp-holder:hover>.content{
+    bottom:0%; opacity: 1;
+} 
 
 
 /* Estilos */
